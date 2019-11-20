@@ -1,5 +1,8 @@
 <?php  
 
+
+
+
 $req_url = 'https://api.exchangeratesapi.io/latest?symbols='.$convertedCurrency.'&base='.$base;
 
 $response_json = file_get_contents($req_url);
@@ -13,7 +16,7 @@ if(false !== $response_json) {
 		$response_object = json_decode($response_json);
 		$price = round(($value * $response_object->rates->$convertedCurrency), 2);
 
-		echo  $price; 
+		echo '<div class="convertedPrice"> The converted  price is :' .$price .'</div>'; 
     }
     catch(Exception $e) {
         return 'Error Occurred';
